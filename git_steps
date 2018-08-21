@@ -4,3 +4,8 @@ cd MilestoneProject
 git init
 git remote add origin https://github.com/myvioletrose/TicTacToe.git
 git pull origin master
+git status
+git add -A
+git commit -m "add a git_steps.txt in the remote repo, this is a simple txt that details the steps and commands used for version control"
+git push -u origin master
+git status
