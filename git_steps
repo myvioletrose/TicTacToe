@@ -1,0 +1,6 @@
+cd Desktop
+mkdir MilestoneProject
+cd MilestoneProject
+git init
+git remote add origin https://github.com/myvioletrose/TicTacToe.git
+git pull origin master
