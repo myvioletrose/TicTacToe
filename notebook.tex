@@ -141,7 +141,7 @@
     \def\gt{>}
     \def\lt{<}
     % Document parameters
-    \title{04-OPTIONAL -Milestone Project 1 - Advanced Solution}
+    \title{03-Milestone Project 1 - Complete Walkthrough Solution}
     
     
     
@@ -280,170 +280,303 @@
     
 
     
-    \section{Tic Tac Toe - Advanced
-Solution}\label{tic-tac-toe---advanced-solution}
+    \section{Milestone Project 1: Full Walk-through Code
+Solution}\label{milestone-project-1-full-walk-through-code-solution}
 
-This solution follows the same basic format as the Complete Walkthrough
-Solution, but takes advantage of some of the more advanced statements we
-have learned. Feel free to download the notebook to understand how it
-works!
+Below is the filled in code that goes along with the complete
+walk-through video. Check out the corresponding lecture videos for more
+information on this code!
+
+    \textbf{Step 1: Write a function that can print out a board. Set up your
+board as a list, where each index 1-9 corresponds with a number on a
+number pad, so you get a 3 by 3 board representation.}
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}1}]:} \PY{c+c1}{\PYZsh{} Specifically for the iPython Notebook environment for clearing output}
-        \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{clear\PYZus{}output}
-        \PY{k+kn}{import} \PY{n+nn}{random}
+{\color{incolor}In [{\color{incolor}1}]:} \PY{k+kn}{from} \PY{n+nn}{IPython}\PY{n+nn}{.}\PY{n+nn}{display} \PY{k}{import} \PY{n}{clear\PYZus{}output}
         
-        \PY{c+c1}{\PYZsh{} Global variables}
-        \PY{n}{theBoard} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{*} \PY{l+m+mi}{10}   \PY{c+c1}{\PYZsh{} a list of empty spaces}
-        \PY{n}{available} \PY{o}{=} \PY{p}{[}\PY{n+nb}{str}\PY{p}{(}\PY{n}{num}\PY{p}{)} \PY{k}{for} \PY{n}{num} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{]} \PY{c+c1}{\PYZsh{} a List Comprehension}
-        \PY{n}{players} \PY{o}{=} \PY{p}{[}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{X}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}   \PY{c+c1}{\PYZsh{} note that players[1] == \PYZsq{}X\PYZsq{} and players[\PYZhy{}1] == \PYZsq{}O\PYZsq{}}
+        \PY{k}{def} \PY{n+nf}{display\PYZus{}board}\PY{p}{(}\PY{n}{board}\PY{p}{)}\PY{p}{:}
+            \PY{n}{clear\PYZus{}output}\PY{p}{(}\PY{p}{)}  \PY{c+c1}{\PYZsh{} Remember, this only works in jupyter!}
+            
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{   |   |}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{]} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ | }\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{8}\PY{p}{]} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ | }\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{9}\PY{p}{]}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{   |   |}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{   |   |}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ | }\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ | }\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{]}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{   |   |}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{   |   |}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ | }\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ | }\PY{l+s+s1}{\PYZsq{}} \PY{o}{+} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{p}{)}
+            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{   |   |}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \textbf{TEST Step 1:} run your function on a test version of the board
+list, and make adjustments as necessary
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}2}]:} \PY{n}{test\PYZus{}board} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsh{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{X}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{X}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{X}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{X}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{X}\PY{l+s+s1}{\PYZsq{}}\PY{p}{]}
+        \PY{n}{display\PYZus{}board}\PY{p}{(}\PY{n}{test\PYZus{}board}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}2}]:} \PY{k}{def} \PY{n+nf}{display\PYZus{}board}\PY{p}{(}\PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{)}\PY{p}{:}
-            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Available   TIC\PYZhy{}TAC\PYZhy{}TOE}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}
-                   \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{  moves}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{  }\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}
-                  \PY{n}{a}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{|}\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}\PY{n}{a}\PY{p}{[}\PY{l+m+mi}{8}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{|}\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}\PY{n}{a}\PY{p}{[}\PY{l+m+mi}{9}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{        }\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}\PY{n}{b}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{|}\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}\PY{n}{b}\PY{p}{[}\PY{l+m+mi}{8}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{|}\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}\PY{n}{b}\PY{p}{[}\PY{l+m+mi}{9}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{  }\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}
-                  \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}        \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{  }\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}
-                  \PY{n}{a}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{|}\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}\PY{n}{a}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{|}\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}\PY{n}{a}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{        }\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}\PY{n}{b}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{|}\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}\PY{n}{b}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{|}\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}\PY{n}{b}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{  }\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}
-                  \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}        \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{  }\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}
-                  \PY{n}{a}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{|}\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}\PY{n}{a}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{|}\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}\PY{n}{a}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{        }\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}\PY{n}{b}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{|}\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}\PY{n}{b}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{|}\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}\PY{n}{b}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-        \PY{n}{display\PYZus{}board}\PY{p}{(}\PY{n}{available}\PY{p}{,}\PY{n}{theBoard}\PY{p}{)}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-Available   TIC-TAC-TOE
-  moves
-
-  7|8|9         | | 
-  -----        -----
-  4|5|6         | | 
-  -----        -----
-  1|2|3         | | 
-
+   |   |
+ X | O | X
+   |   |
+-----------
+   |   |
+ O | X | O
+   |   |
+-----------
+   |   |
+ X | O | X
+   |   |
 
     \end{Verbatim}
 
+    \textbf{Step 2: Write a function that can take in a player input and
+assign their marker as 'X' or 'O'. Think about using \emph{while} loops
+to continually ask until you get a correct answer.}
+
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}11}]:} \PY{k}{def} \PY{n+nf}{display\PYZus{}board}\PY{p}{(}\PY{n}{a}\PY{p}{,}\PY{n}{b}\PY{p}{)}\PY{p}{:}
-             \PY{n+nb}{print}\PY{p}{(}\PY{n}{f}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Available   TIC\PYZhy{}TAC\PYZhy{}TOE}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{  moves}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{  }\PY{l+s+si}{\PYZob{}a[7]\PYZcb{}}\PY{l+s+s1}{|}\PY{l+s+si}{\PYZob{}a[8]\PYZcb{}}\PY{l+s+s1}{|}\PY{l+s+si}{\PYZob{}a[9]\PYZcb{}}\PY{l+s+s1}{        }\PY{l+s+si}{\PYZob{}b[7]\PYZcb{}}\PY{l+s+s1}{|}\PY{l+s+si}{\PYZob{}b[8]\PYZcb{}}\PY{l+s+s1}{|}\PY{l+s+si}{\PYZob{}b[9]\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{  \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}        \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{  }\PY{l+s+si}{\PYZob{}a[4]\PYZcb{}}\PY{l+s+s1}{|}\PY{l+s+si}{\PYZob{}a[5]\PYZcb{}}\PY{l+s+s1}{|}\PY{l+s+si}{\PYZob{}a[6]\PYZcb{}}\PY{l+s+s1}{        }\PY{l+s+si}{\PYZob{}b[4]\PYZcb{}}\PY{l+s+s1}{|}\PY{l+s+si}{\PYZob{}b[5]\PYZcb{}}\PY{l+s+s1}{|}\PY{l+s+si}{\PYZob{}b[6]\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{  \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}        \PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}\PYZhy{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{  }\PY{l+s+si}{\PYZob{}a[1]\PYZcb{}}\PY{l+s+s1}{|}\PY{l+s+si}{\PYZob{}a[2]\PYZcb{}}\PY{l+s+s1}{|}\PY{l+s+si}{\PYZob{}a[3]\PYZcb{}}\PY{l+s+s1}{        }\PY{l+s+si}{\PYZob{}b[1]\PYZcb{}}\PY{l+s+s1}{|}\PY{l+s+si}{\PYZob{}b[2]\PYZcb{}}\PY{l+s+s1}{|}\PY{l+s+si}{\PYZob{}b[3]\PYZcb{}}\PY{l+s+se}{\PYZbs{}n}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-         \PY{n}{display\PYZus{}board}\PY{p}{(}\PY{n}{available}\PY{p}{,}\PY{n}{theBoard}\PY{p}{)}
+{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{def} \PY{n+nf}{player\PYZus{}input}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{n}{marker} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZsq{}}
+            
+            \PY{k}{while} \PY{o+ow}{not} \PY{p}{(}\PY{n}{marker} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{X}\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{or} \PY{n}{marker} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{:}
+                \PY{n}{marker} \PY{o}{=} \PY{n+nb}{input}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Player 1: Do you want to be X or O? }\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{upper}\PY{p}{(}\PY{p}{)}
+        
+            \PY{k}{if} \PY{n}{marker} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{X}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+                \PY{k}{return} \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{X}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+            \PY{k}{else}\PY{p}{:}
+                \PY{k}{return} \PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{O}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{X}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \textbf{TEST Step 2:} run the function to make sure it returns the
+desired output
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{player\PYZus{}input}\PY{p}{(}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-Available   TIC-TAC-TOE
-  moves
-
-  7|8|9         | | 
-  -----        -----
-  4|5|6         | | 
-  -----        -----
-  1|2|3         | | 
-
+Player 1: Do you want to be X or O? X
 
     \end{Verbatim}
 
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}4}]:} ('X', 'O')
+\end{Verbatim}
+            
+    \textbf{Step 3: Write a function that takes in the board list object, a
+marker ('X' or 'O'), and a desired position (number 1-9) and assigns it
+to the board.}
+
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}3}]:} \PY{k}{def} \PY{n+nf}{place\PYZus{}marker}\PY{p}{(}\PY{n}{avail}\PY{p}{,}\PY{n}{board}\PY{p}{,}\PY{n}{marker}\PY{p}{,}\PY{n}{position}\PY{p}{)}\PY{p}{:}
+{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{def} \PY{n+nf}{place\PYZus{}marker}\PY{p}{(}\PY{n}{board}\PY{p}{,} \PY{n}{marker}\PY{p}{,} \PY{n}{position}\PY{p}{)}\PY{p}{:}
             \PY{n}{board}\PY{p}{[}\PY{n}{position}\PY{p}{]} \PY{o}{=} \PY{n}{marker}
-            \PY{n}{avail}\PY{p}{[}\PY{n}{position}\PY{p}{]} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}}
+\end{Verbatim}
+
+
+    \textbf{TEST Step 3:} run the place marker function using test
+parameters and display the modified board
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}6}]:} \PY{n}{place\PYZus{}marker}\PY{p}{(}\PY{n}{test\PYZus{}board}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{\PYZdl{}}\PY{l+s+s1}{\PYZsq{}}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{)}
+        \PY{n}{display\PYZus{}board}\PY{p}{(}\PY{n}{test\PYZus{}board}\PY{p}{)}
 \end{Verbatim}
 
 
     \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}4}]:} \PY{k}{def} \PY{n+nf}{win\PYZus{}check}\PY{p}{(}\PY{n}{board}\PY{p}{,}\PY{n}{mark}\PY{p}{)}\PY{p}{:}
-        
-            \PY{k}{return} \PY{p}{(}\PY{p}{(}\PY{n}{board}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{]} \PY{o}{==}  \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{8}\PY{p}{]} \PY{o}{==}  \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{9}\PY{p}{]} \PY{o}{==} \PY{n}{mark}\PY{p}{)} \PY{o+ow}{or} \PY{c+c1}{\PYZsh{} across the top}
-            \PY{p}{(}\PY{n}{board}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]} \PY{o}{==}  \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]} \PY{o}{==}  \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{]} \PY{o}{==} \PY{n}{mark}\PY{p}{)} \PY{o+ow}{or} \PY{c+c1}{\PYZsh{} across the middle}
-            \PY{p}{(}\PY{n}{board}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{==}  \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]} \PY{o}{==}  \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]} \PY{o}{==} \PY{n}{mark}\PY{p}{)} \PY{o+ow}{or} \PY{c+c1}{\PYZsh{} across the bottom}
-            \PY{p}{(}\PY{n}{board}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{]} \PY{o}{==}  \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]} \PY{o}{==}  \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{==} \PY{n}{mark}\PY{p}{)} \PY{o+ow}{or} \PY{c+c1}{\PYZsh{} down the middle}
-            \PY{p}{(}\PY{n}{board}\PY{p}{[}\PY{l+m+mi}{8}\PY{p}{]} \PY{o}{==}  \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]} \PY{o}{==}  \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]} \PY{o}{==} \PY{n}{mark}\PY{p}{)} \PY{o+ow}{or} \PY{c+c1}{\PYZsh{} down the middle}
-            \PY{p}{(}\PY{n}{board}\PY{p}{[}\PY{l+m+mi}{9}\PY{p}{]} \PY{o}{==}  \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{]} \PY{o}{==}  \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]} \PY{o}{==} \PY{n}{mark}\PY{p}{)} \PY{o+ow}{or} \PY{c+c1}{\PYZsh{} down the right side}
-            \PY{p}{(}\PY{n}{board}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{]} \PY{o}{==}  \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]} \PY{o}{==}  \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]} \PY{o}{==} \PY{n}{mark}\PY{p}{)} \PY{o+ow}{or} \PY{c+c1}{\PYZsh{} diagonal}
-            \PY{p}{(}\PY{n}{board}\PY{p}{[}\PY{l+m+mi}{9}\PY{p}{]} \PY{o}{==}  \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]} \PY{o}{==}  \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{==} \PY{n}{mark}\PY{p}{)}\PY{p}{)} \PY{c+c1}{\PYZsh{} diagonal}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}5}]:} \PY{k}{def} \PY{n+nf}{random\PYZus{}player}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-            \PY{k}{return} \PY{n}{random}\PY{o}{.}\PY{n}{choice}\PY{p}{(}\PY{p}{(}\PY{o}{\PYZhy{}}\PY{l+m+mi}{1}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)}\PY{p}{)}
-            
-        \PY{k}{def} \PY{n+nf}{space\PYZus{}check}\PY{p}{(}\PY{n}{board}\PY{p}{,}\PY{n}{position}\PY{p}{)}\PY{p}{:}
-            \PY{k}{return} \PY{n}{board}\PY{p}{[}\PY{n}{position}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}}
-        
-        \PY{k}{def} \PY{n+nf}{full\PYZus{}board\PYZus{}check}\PY{p}{(}\PY{n}{board}\PY{p}{)}\PY{p}{:}
-            \PY{k}{return} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}} \PY{o+ow}{not} \PY{o+ow}{in} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{:}\PY{p}{]}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}6}]:} \PY{k}{def} \PY{n+nf}{player\PYZus{}choice}\PY{p}{(}\PY{n}{board}\PY{p}{,}\PY{n}{player}\PY{p}{)}\PY{p}{:}
-            \PY{n}{position} \PY{o}{=} \PY{l+m+mi}{0}
-            
-            \PY{k}{while} \PY{n}{position} \PY{o+ow}{not} \PY{o+ow}{in} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{]} \PY{o+ow}{or} \PY{o+ow}{not} \PY{n}{space\PYZus{}check}\PY{p}{(}\PY{n}{board}\PY{p}{,} \PY{n}{position}\PY{p}{)}\PY{p}{:}
-                \PY{k}{try}\PY{p}{:}
-                    \PY{n}{position} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{n+nb}{input}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Player }\PY{l+s+si}{\PYZpc{}s}\PY{l+s+s1}{, choose your next position: (1\PYZhy{}9) }\PY{l+s+s1}{\PYZsq{}}\PY{o}{\PYZpc{}}\PY{p}{(}\PY{n}{player}\PY{p}{)}\PY{p}{)}\PY{p}{)}
-                \PY{k}{except}\PY{p}{:}
-                    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{I}\PY{l+s+s2}{\PYZsq{}}\PY{l+s+s2}{m sorry, please try again.}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
-                
-            \PY{k}{return} \PY{n}{position}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor}7}]:} \PY{k}{def} \PY{n+nf}{replay}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-            
-            \PY{k}{return} \PY{n+nb}{input}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Do you want to play again? Enter Yes or No: }\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{lower}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{startswith}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-{\color{incolor}In [{\color{incolor} }]:} \PY{k}{while} \PY{k+kc}{True}\PY{p}{:}
-            \PY{n}{clear\PYZus{}output}\PY{p}{(}\PY{p}{)}
-            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Welcome to Tic Tac Toe!}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-            
-            \PY{n}{toggle} \PY{o}{=} \PY{n}{random\PYZus{}player}\PY{p}{(}\PY{p}{)}
-            \PY{n}{player} \PY{o}{=} \PY{n}{players}\PY{p}{[}\PY{n}{toggle}\PY{p}{]}
-            \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{For this round, Player }\PY{l+s+si}{\PYZpc{}s}\PY{l+s+s1}{ will go first!}\PY{l+s+s1}{\PYZsq{}} \PY{o}{\PYZpc{}}\PY{p}{(}\PY{n}{player}\PY{p}{)}\PY{p}{)}
-            
-            \PY{n}{game\PYZus{}on} \PY{o}{=} \PY{k+kc}{True}
-            \PY{n+nb}{input}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Hit Enter to continue}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-            \PY{k}{while} \PY{n}{game\PYZus{}on}\PY{p}{:}
-                \PY{n}{display\PYZus{}board}\PY{p}{(}\PY{n}{available}\PY{p}{,}\PY{n}{theBoard}\PY{p}{)}
-                \PY{n}{position} \PY{o}{=} \PY{n}{player\PYZus{}choice}\PY{p}{(}\PY{n}{theBoard}\PY{p}{,}\PY{n}{player}\PY{p}{)}
-                \PY{n}{place\PYZus{}marker}\PY{p}{(}\PY{n}{available}\PY{p}{,}\PY{n}{theBoard}\PY{p}{,}\PY{n}{player}\PY{p}{,}\PY{n}{position}\PY{p}{)}
-        
-                \PY{k}{if} \PY{n}{win\PYZus{}check}\PY{p}{(}\PY{n}{theBoard}\PY{p}{,} \PY{n}{player}\PY{p}{)}\PY{p}{:}
-                    \PY{n}{display\PYZus{}board}\PY{p}{(}\PY{n}{available}\PY{p}{,}\PY{n}{theBoard}\PY{p}{)}
-                    \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Congratulations! Player }\PY{l+s+s1}{\PYZsq{}}\PY{o}{+}\PY{n}{player}\PY{o}{+}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ wins!}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-                    \PY{n}{game\PYZus{}on} \PY{o}{=} \PY{k+kc}{False}
-                \PY{k}{else}\PY{p}{:}
-                    \PY{k}{if} \PY{n}{full\PYZus{}board\PYZus{}check}\PY{p}{(}\PY{n}{theBoard}\PY{p}{)}\PY{p}{:}
-                        \PY{n}{display\PYZus{}board}\PY{p}{(}\PY{n}{available}\PY{p}{,}\PY{n}{theBoard}\PY{p}{)}
-                        \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{The game is a draw!}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
-                        \PY{k}{break}
-                    \PY{k}{else}\PY{p}{:}
-                        \PY{n}{toggle} \PY{o}{*}\PY{o}{=} \PY{o}{\PYZhy{}}\PY{l+m+mi}{1}
-                        \PY{n}{player} \PY{o}{=} \PY{n}{players}\PY{p}{[}\PY{n}{toggle}\PY{p}{]}
-                        \PY{n}{clear\PYZus{}output}\PY{p}{(}\PY{p}{)}
-        
-            \PY{c+c1}{\PYZsh{} reset the board and available moves list}
-            \PY{n}{theBoard} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{*} \PY{l+m+mi}{10}
-            \PY{n}{available} \PY{o}{=} \PY{p}{[}\PY{n+nb}{str}\PY{p}{(}\PY{n}{num}\PY{p}{)} \PY{k}{for} \PY{n}{num} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{]}
-            
-            \PY{k}{if} \PY{o+ow}{not} \PY{n}{replay}\PY{p}{(}\PY{p}{)}\PY{p}{:}
-                \PY{k}{break}
-\end{Verbatim}
-
-
-    \begin{Verbatim}[commandchars=\\\{\}]
-Welcome to Tic Tac Toe!
-For this round, Player X will go first!
+   |   |
+ X | \$ | X
+   |   |
+-----------
+   |   |
+ O | X | O
+   |   |
+-----------
+   |   |
+ X | O | X
+   |   |
 
     \end{Verbatim}
+
+    \textbf{Step 4: Write a function that takes in a board and checks to see
+if someone has won. }
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{k}{def} \PY{n+nf}{win\PYZus{}check}\PY{p}{(}\PY{n}{board}\PY{p}{,}\PY{n}{mark}\PY{p}{)}\PY{p}{:}
+            
+            \PY{k}{return} \PY{p}{(}\PY{p}{(}\PY{n}{board}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{]} \PY{o}{==} \PY{n}{mark} \PY{o+ow}{and} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{8}\PY{p}{]} \PY{o}{==} \PY{n}{mark} \PY{o+ow}{and} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{9}\PY{p}{]} \PY{o}{==} \PY{n}{mark}\PY{p}{)} \PY{o+ow}{or} \PY{c+c1}{\PYZsh{} across the top}
+            \PY{p}{(}\PY{n}{board}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]} \PY{o}{==} \PY{n}{mark} \PY{o+ow}{and} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]} \PY{o}{==} \PY{n}{mark} \PY{o+ow}{and} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{]} \PY{o}{==} \PY{n}{mark}\PY{p}{)} \PY{o+ow}{or} \PY{c+c1}{\PYZsh{} across the middle}
+            \PY{p}{(}\PY{n}{board}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{==} \PY{n}{mark} \PY{o+ow}{and} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]} \PY{o}{==} \PY{n}{mark} \PY{o+ow}{and} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]} \PY{o}{==} \PY{n}{mark}\PY{p}{)} \PY{o+ow}{or} \PY{c+c1}{\PYZsh{} across the bottom}
+            \PY{p}{(}\PY{n}{board}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{]} \PY{o}{==} \PY{n}{mark} \PY{o+ow}{and} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{4}\PY{p}{]} \PY{o}{==} \PY{n}{mark} \PY{o+ow}{and} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{==} \PY{n}{mark}\PY{p}{)} \PY{o+ow}{or} \PY{c+c1}{\PYZsh{} down the middle}
+            \PY{p}{(}\PY{n}{board}\PY{p}{[}\PY{l+m+mi}{8}\PY{p}{]} \PY{o}{==} \PY{n}{mark} \PY{o+ow}{and} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]} \PY{o}{==} \PY{n}{mark} \PY{o+ow}{and} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{2}\PY{p}{]} \PY{o}{==} \PY{n}{mark}\PY{p}{)} \PY{o+ow}{or} \PY{c+c1}{\PYZsh{} down the middle}
+            \PY{p}{(}\PY{n}{board}\PY{p}{[}\PY{l+m+mi}{9}\PY{p}{]} \PY{o}{==} \PY{n}{mark} \PY{o+ow}{and} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{6}\PY{p}{]} \PY{o}{==} \PY{n}{mark} \PY{o+ow}{and} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]} \PY{o}{==} \PY{n}{mark}\PY{p}{)} \PY{o+ow}{or} \PY{c+c1}{\PYZsh{} down the right side}
+            \PY{p}{(}\PY{n}{board}\PY{p}{[}\PY{l+m+mi}{7}\PY{p}{]} \PY{o}{==} \PY{n}{mark} \PY{o+ow}{and} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]} \PY{o}{==} \PY{n}{mark} \PY{o+ow}{and} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{3}\PY{p}{]} \PY{o}{==} \PY{n}{mark}\PY{p}{)} \PY{o+ow}{or} \PY{c+c1}{\PYZsh{} diagonal}
+            \PY{p}{(}\PY{n}{board}\PY{p}{[}\PY{l+m+mi}{9}\PY{p}{]} \PY{o}{==} \PY{n}{mark} \PY{o+ow}{and} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{5}\PY{p}{]} \PY{o}{==} \PY{n}{mark} \PY{o+ow}{and} \PY{n}{board}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]} \PY{o}{==} \PY{n}{mark}\PY{p}{)}\PY{p}{)} \PY{c+c1}{\PYZsh{} diagonal}
+\end{Verbatim}
+
+
+    \textbf{TEST Step 4:} run the win\_check function against our
+test\_board - it should return True
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{n}{win\PYZus{}check}\PY{p}{(}\PY{n}{test\PYZus{}board}\PY{p}{,}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{X}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+\begin{Verbatim}[commandchars=\\\{\}]
+{\color{outcolor}Out[{\color{outcolor}8}]:} True
+\end{Verbatim}
+            
+    \textbf{Step 5: Write a function that uses the random module to randomly
+decide which player goes first. You may want to lookup random.randint()
+Return a string of which player went first.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}9}]:} \PY{k+kn}{import} \PY{n+nn}{random}
+        
+        \PY{k}{def} \PY{n+nf}{choose\PYZus{}first}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+            \PY{k}{if} \PY{n}{random}\PY{o}{.}\PY{n}{randint}\PY{p}{(}\PY{l+m+mi}{0}\PY{p}{,} \PY{l+m+mi}{1}\PY{p}{)} \PY{o}{==} \PY{l+m+mi}{0}\PY{p}{:}
+                \PY{k}{return} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Player 2}\PY{l+s+s1}{\PYZsq{}}
+            \PY{k}{else}\PY{p}{:}
+                \PY{k}{return} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Player 1}\PY{l+s+s1}{\PYZsq{}}
+\end{Verbatim}
+
+
+    \textbf{Step 6: Write a function that returns a boolean indicating
+whether a space on the board is freely available.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}10}]:} \PY{k}{def} \PY{n+nf}{space\PYZus{}check}\PY{p}{(}\PY{n}{board}\PY{p}{,} \PY{n}{position}\PY{p}{)}\PY{p}{:}
+             
+             \PY{k}{return} \PY{n}{board}\PY{p}{[}\PY{n}{position}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}}
+\end{Verbatim}
+
+
+    \textbf{Step 7: Write a function that checks if the board is full and
+returns a boolean value. True if full, False otherwise.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{k}{def} \PY{n+nf}{full\PYZus{}board\PYZus{}check}\PY{p}{(}\PY{n}{board}\PY{p}{)}\PY{p}{:}
+             \PY{k}{for} \PY{n}{i} \PY{o+ow}{in} \PY{n+nb}{range}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{10}\PY{p}{)}\PY{p}{:}
+                 \PY{k}{if} \PY{n}{space\PYZus{}check}\PY{p}{(}\PY{n}{board}\PY{p}{,} \PY{n}{i}\PY{p}{)}\PY{p}{:}
+                     \PY{k}{return} \PY{k+kc}{False}
+             \PY{k}{return} \PY{k+kc}{True}
+\end{Verbatim}
+
+
+    \textbf{Step 8: Write a function that asks for a player's next position
+(as a number 1-9) and then uses the function from step 6 to check if its
+a free position. If it is, then return the position for later use. }
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}12}]:} \PY{k}{def} \PY{n+nf}{player\PYZus{}choice}\PY{p}{(}\PY{n}{board}\PY{p}{)}\PY{p}{:}
+             \PY{n}{position} \PY{o}{=} \PY{l+m+mi}{0}
+             
+             \PY{k}{while} \PY{n}{position} \PY{o+ow}{not} \PY{o+ow}{in} \PY{p}{[}\PY{l+m+mi}{1}\PY{p}{,}\PY{l+m+mi}{2}\PY{p}{,}\PY{l+m+mi}{3}\PY{p}{,}\PY{l+m+mi}{4}\PY{p}{,}\PY{l+m+mi}{5}\PY{p}{,}\PY{l+m+mi}{6}\PY{p}{,}\PY{l+m+mi}{7}\PY{p}{,}\PY{l+m+mi}{8}\PY{p}{,}\PY{l+m+mi}{9}\PY{p}{]} \PY{o+ow}{or} \PY{o+ow}{not} \PY{n}{space\PYZus{}check}\PY{p}{(}\PY{n}{board}\PY{p}{,} \PY{n}{position}\PY{p}{)}\PY{p}{:}
+                 \PY{n}{position} \PY{o}{=} \PY{n+nb}{int}\PY{p}{(}\PY{n+nb}{input}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Choose your next position: (1\PYZhy{}9) }\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{p}{)}
+                 
+             \PY{k}{return} \PY{n}{position}
+\end{Verbatim}
+
+
+    \textbf{Step 9: Write a function that asks the player if they want to
+play again and returns a boolean True if they do want to play again.}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}13}]:} \PY{k}{def} \PY{n+nf}{replay}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+             
+             \PY{k}{return} \PY{n+nb}{input}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Do you want to play again? Enter Yes or No: }\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}\PY{o}{.}\PY{n}{lower}\PY{p}{(}\PY{p}{)}\PY{o}{.}\PY{n}{startswith}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+\end{Verbatim}
+
+
+    \textbf{Step 10: Here comes the hard part! Use while loops and the
+functions you've made to run the game!}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Welcome to Tic Tac Toe!}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+         
+         \PY{k}{while} \PY{k+kc}{True}\PY{p}{:}
+             \PY{c+c1}{\PYZsh{} Reset the board}
+             \PY{n}{theBoard} \PY{o}{=} \PY{p}{[}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ }\PY{l+s+s1}{\PYZsq{}}\PY{p}{]} \PY{o}{*} \PY{l+m+mi}{10}
+             \PY{n}{player1\PYZus{}marker}\PY{p}{,} \PY{n}{player2\PYZus{}marker} \PY{o}{=} \PY{n}{player\PYZus{}input}\PY{p}{(}\PY{p}{)}
+             \PY{n}{turn} \PY{o}{=} \PY{n}{choose\PYZus{}first}\PY{p}{(}\PY{p}{)}
+             \PY{n+nb}{print}\PY{p}{(}\PY{n}{turn} \PY{o}{+} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{ will go first.}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+             
+             \PY{n}{play\PYZus{}game} \PY{o}{=} \PY{n+nb}{input}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Are you ready to play? Enter Yes or No.}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+             
+             \PY{k}{if} \PY{n}{play\PYZus{}game}\PY{o}{.}\PY{n}{lower}\PY{p}{(}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{0}\PY{p}{]} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{y}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+                 \PY{n}{game\PYZus{}on} \PY{o}{=} \PY{k+kc}{True}
+             \PY{k}{else}\PY{p}{:}
+                 \PY{n}{game\PYZus{}on} \PY{o}{=} \PY{k+kc}{False}
+         
+             \PY{k}{while} \PY{n}{game\PYZus{}on}\PY{p}{:}
+                 \PY{k}{if} \PY{n}{turn} \PY{o}{==} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Player 1}\PY{l+s+s1}{\PYZsq{}}\PY{p}{:}
+                     \PY{c+c1}{\PYZsh{} Player1\PYZsq{}s turn.}
+                     
+                     \PY{n}{display\PYZus{}board}\PY{p}{(}\PY{n}{theBoard}\PY{p}{)}
+                     \PY{n}{position} \PY{o}{=} \PY{n}{player\PYZus{}choice}\PY{p}{(}\PY{n}{theBoard}\PY{p}{)}
+                     \PY{n}{place\PYZus{}marker}\PY{p}{(}\PY{n}{theBoard}\PY{p}{,} \PY{n}{player1\PYZus{}marker}\PY{p}{,} \PY{n}{position}\PY{p}{)}
+         
+                     \PY{k}{if} \PY{n}{win\PYZus{}check}\PY{p}{(}\PY{n}{theBoard}\PY{p}{,} \PY{n}{player1\PYZus{}marker}\PY{p}{)}\PY{p}{:}
+                         \PY{n}{display\PYZus{}board}\PY{p}{(}\PY{n}{theBoard}\PY{p}{)}
+                         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Congratulations! You have won the game!}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                         \PY{n}{game\PYZus{}on} \PY{o}{=} \PY{k+kc}{False}
+                     \PY{k}{else}\PY{p}{:}
+                         \PY{k}{if} \PY{n}{full\PYZus{}board\PYZus{}check}\PY{p}{(}\PY{n}{theBoard}\PY{p}{)}\PY{p}{:}
+                             \PY{n}{display\PYZus{}board}\PY{p}{(}\PY{n}{theBoard}\PY{p}{)}
+                             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{The game is a draw!}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                             \PY{k}{break}
+                         \PY{k}{else}\PY{p}{:}
+                             \PY{n}{turn} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Player 2}\PY{l+s+s1}{\PYZsq{}}
+         
+                 \PY{k}{else}\PY{p}{:}
+                     \PY{c+c1}{\PYZsh{} Player2\PYZsq{}s turn.}
+                     
+                     \PY{n}{display\PYZus{}board}\PY{p}{(}\PY{n}{theBoard}\PY{p}{)}
+                     \PY{n}{position} \PY{o}{=} \PY{n}{player\PYZus{}choice}\PY{p}{(}\PY{n}{theBoard}\PY{p}{)}
+                     \PY{n}{place\PYZus{}marker}\PY{p}{(}\PY{n}{theBoard}\PY{p}{,} \PY{n}{player2\PYZus{}marker}\PY{p}{,} \PY{n}{position}\PY{p}{)}
+         
+                     \PY{k}{if} \PY{n}{win\PYZus{}check}\PY{p}{(}\PY{n}{theBoard}\PY{p}{,} \PY{n}{player2\PYZus{}marker}\PY{p}{)}\PY{p}{:}
+                         \PY{n}{display\PYZus{}board}\PY{p}{(}\PY{n}{theBoard}\PY{p}{)}
+                         \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Player 2 has won!}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                         \PY{n}{game\PYZus{}on} \PY{o}{=} \PY{k+kc}{False}
+                     \PY{k}{else}\PY{p}{:}
+                         \PY{k}{if} \PY{n}{full\PYZus{}board\PYZus{}check}\PY{p}{(}\PY{n}{theBoard}\PY{p}{)}\PY{p}{:}
+                             \PY{n}{display\PYZus{}board}\PY{p}{(}\PY{n}{theBoard}\PY{p}{)}
+                             \PY{n+nb}{print}\PY{p}{(}\PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{The game is a draw!}\PY{l+s+s1}{\PYZsq{}}\PY{p}{)}
+                             \PY{k}{break}
+                         \PY{k}{else}\PY{p}{:}
+                             \PY{n}{turn} \PY{o}{=} \PY{l+s+s1}{\PYZsq{}}\PY{l+s+s1}{Player 1}\PY{l+s+s1}{\PYZsq{}}
+         
+             \PY{k}{if} \PY{o+ow}{not} \PY{n}{replay}\PY{p}{(}\PY{p}{)}\PY{p}{:}
+                 \PY{k}{break}
+\end{Verbatim}
+
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+   |   |
+   | O | O
+   |   |
+-----------
+   |   |
+   |   |  
+   |   |
+-----------
+   |   |
+ X | X | X
+   |   |
+Congratulations! You have won the game!
+Do you want to play again? Enter Yes or No: No
+
+    \end{Verbatim}
+
+    \subsection{Good Job!}\label{good-job}
 
 
     % Add a bibliography block to the postdoc
