@@ -40,8 +40,7 @@ def win_check(b, mark):
 			( b[3] == b[5] == b[7] == mark ) )
 
 # player choice - to update marker "position"
-# I am not sure why this below piece would work, shouldn't position be defined first as a global variable and then subsequently overwritten when the game begins?
-# really don't understand why this below would work...??
+# the key to understand this below code is to ask how to break this while loop
 def player_choice(b, pl):
 	position = 0
 
